@@ -1,0 +1,41 @@
+<div id="top-bar">
+	<a href="/"><img id="top-bar-icon" src="/img/title.png"></a>
+    <h4 id="login-as">Logged in as:  <a href="/users/<%= current_user.id %>"><%= current_user.username %></a></h4>
+	<a id="signoutbutton" href="/logout">Sign Out</a>
+	<a id="home" href="/">Home</a>
+</div>
+
+<div id="profile-container">
+	<img id="profile-img" src="/img/blank-profile.png">
+	<p>Username: <%= @user.username %></p>
+	<p>Email: <%= @user.email %></p>
+	<hr>
+
+	<% if @user.questions != [] %>
+		<h3><a href="/users/<%= @user.id %>/questions">Click here to view questions!</a></h3>
+	<% elsif @user.questions == [] %>
+		<h3>No questions asked yet!</h3>
+	<% end %>
+
+	<% if @user.answers != [] %>
+		<h3><a href="/users/<%= @user.id %>/answers">Click here to view answers!</a></h3>
+	<% elsif @user.answers == [] %>
+		<h3>No answers posted yet!</h3>
+	<% end %>
+</div>
+
+<div id="answer-list-container">
+	<h3>List of answers posted by: <a href="/users/<%= @user.id %>"><%= @user.username %></a></h3>
+	<hr id="specialline">
+	<% if @user.answers != [] %>
+		<% @user.answers.each do |a| %>
+			<% @question = Question.find(a.question_id) %>
+			<% if @question != nil %>
+					<p class="lessbottommargin"><%= a.description %></p>
+					<br>
+					<p class="lesstopmargin">Belongs to question: <a href="/questions/<%= @question.id %>"><%= @question.title %></a></p>
+					<hr id="separator">
+			<% end %>
+		<% end %>
+	<% end %>
+</div>

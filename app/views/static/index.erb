@@ -1,2 +1,27 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<div id="front-page-container">
+	<div id="title">
+		<h1>Pika</h1><img id="title-icon" src="/img/title.png">
+		<p>A place where question meets inspiration</p>
+	</div>
+	<hr id=homepage-divider>
+	<br>
+	<div id="signup">
+		<h2>Sign up here!</h2>
+		<form method="post" action="/signup" id="signupform">
+		    <input class="signupinput" type=text placeholder="Email" name="user_email"><br>
+		    <input class="signupinput" type=text placeholder="Username" name="user_username"><br>
+		    <input class="signupinput" type=password placeholder="Password" name="user_password"></br>
+		    <input id="signupbutton" class="buttoneffect" type=submit value="Sign up">
+		</form>
+	</div>
+	<div id="signin">
+		<h3><span>OR</span></h3>
+		<h2>Log in here!</h2>
+		<form method="post" action="/login" id="loginform">
+		    <input class="signupinput" type=text placeholder="Email" name="user_email"><br>
+		    <input class="signupinput" type=password placeholder="Password" name="user_password"></br>
+		    <input id="loginbutton" class="buttoneffect" type=submit value="Log in">
+		</form>
+	</div>
+</div>
+

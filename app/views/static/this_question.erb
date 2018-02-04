@@ -1,0 +1,59 @@
+<div id="top-bar">
+	<a href="/"><img id="top-bar-icon" src="/img/title.png"></a>
+    <h4 id="login-as">Logged in as:  <a href="/users/<%= current_user.id %>"><%= current_user.username %></a></h4>
+	<a id="signoutbutton" href="/logout">Sign Out</a>
+	<a id="home" href="/">Home</a>
+</div> 
+<div id="current-question-container">
+	<% if logged_in? %>
+		<h3>Title: <%= @question.title %></h3>
+		<p><% if current_user.id == @question.user_id %><a href="/question/<%= @question.id %>/edit">Edit</a>&nbsp;&nbsp;<a href="/question/<%= @question.id %>/delete">Delete</a><% end %></p>
+		<p><%= @question.description %></p>
+		<br>
+		<h4>Answers</h4>
+		<hr id="specialline">
+		<br>
+		<% if @question.answers != [] %>
+			<% @question.answers.each_with_index do |a, ind| %>
+				<% @user = User.find(a.user_id) %>
+
+				<span id="answer-heading"><b>#<%= ind + 1 %> -posted by:</b> <a href="/users/<%= @user.id %>"><%= @user.username %></b></a>&nbsp;&nbsp;<% if current_user.id == a.user_id %><a href="/answer/<%= a.id %>/edit">Edit</a>&nbsp;&nbsp;<a href="/answer/<%= a.id %>/delete">Delete</a><% end %></span>
+					<p><%= a.description %></p>
+						
+					<div id="upvotecount">	
+						<p><span class="plusone"><%= a.votes.count %></span>&nbsp;&nbsp;<img id="likeicon" src="/img/like.png"></p>
+					</div>
+
+					<% if a.votes.pluck(:user_id).include?(current_user.id) == false %> 
+						<form method="POST" action="/vote/<%= a.id %>" class="upvote">
+							<input type="hidden" name="upvote" value="1">
+							<input id="likebutton" class="buttoneffect" type="submit" value="Upvote!">
+						</form> 
+						<hr id="separator">
+					<% elsif a.votes.pluck(:user_id).include?(current_user.id) == true %>
+						<p id="liked">You've liked this post!</p>
+						<hr id="separator">
+					<% end %>
+			
+			<br>
+
+			<% end %>
+		<% else %>
+			<h3>No answer yet! Be the first to reply <a href="#answer-input-container">here!</a></h3>
+		<% end %>
+		
+</div>
+<div id="answer-input-container">
+	<form method="post" action="/answer">
+	    <textarea id="answer-content-input" rows="10" cols="50" placeholder="Type to reply..." name="user_answer" wrap="soft"></textarea>
+		<input type="hidden" name="current_question_id" value="<%= @question.id %>">
+		<br>
+	    <input class="buttoneffect" type="submit" value="Answer!">
+	</form>
+	<h3><a href="/users/<%= @question.user_id %>/questions">Go back to question's list</a></h3>
+<% else %>
+	<h2>Haven't logged in!</h2>
+	<h5><a href="/">Please click here to login!</a></h5>
+<% end %>
+</div>
+

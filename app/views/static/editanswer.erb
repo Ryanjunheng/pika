@@ -1,0 +1,17 @@
+<div id="top-bar">
+	<a href="/"><img id="top-bar-icon" src="/img/title.png"></a>
+    <h4 id="login-as">Logged in as:  <a href="/users/<%= current_user.id %>"><%= current_user.username %></a></h4>
+	<a id="signoutbutton" href="/logout">Sign Out</a>
+	<a id="home" href="/">Home</a>
+</div>
+
+
+<div id="edit-answer-input-container">
+	<h2>New Answer:</h2>
+	<form method="POST" action="/answer/<%= @answer.id %>">
+		<textarea id="edit-answer-content-input" rows="10" cols="50" name="answer_description" wrap="soft"><%= @answer.description %></textarea>
+		<br>
+		<input class="buttoneffect" type="submit" name="Submit">
+	</form>
+</div>
+

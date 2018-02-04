@@ -59,8 +59,9 @@ $(document).ready(function(){
 			dataType: "JSON",
 			success: function(response){
 				if (response.saved == false){
+				$formSubmit.val('whattt');
 				alert("Something wrong :( Please make sure everything entered is LEGIT!");
-				$formSubmit.val('Log in').attr("disabled", false);
+				// $formSubmit.val('Log in').attr("disabled", false);
 			} else {
 				window.location.replace("/users/" + response.id);
 			}

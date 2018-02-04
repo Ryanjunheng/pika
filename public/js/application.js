@@ -28,7 +28,7 @@ $(document).ready(function(){
 		event.preventDefault()
 		$form = $(event.target)
 		$formSubmit = $form.find('input[id="signupbutton"]')
-		$formSubmit.val('Loading...')
+		$formSubmit.val('Loading...').attr("disabled", true);
 		$.ajax({
 			url: $form.attr('action'),
 			method: $form.attr('method'),
@@ -37,7 +37,7 @@ $(document).ready(function(){
 			success: function(response){
 				if (response.saved == false){ 
 				alert("Something wrong :( Please make sure everything entered is LEGIT!");
-				$formSubmit.val('Sign up');
+				$formSubmit.val('Sign up').attr("disabled", false);
 			} else {
 				window.location.replace("/users/" + response.id)
 			}
@@ -52,7 +52,7 @@ $(document).ready(function(){
 		event.preventDefault()
 		$form = $(event.target)
 		$formSubmit = $form.find('input[id="loginbutton"]')
-		$formSubmit.val('Loading...')
+		$formSubmit.val('Loading...').attr("disabled", true);
 		$.ajax({
 			url: $form.attr('action'),
 			method: $form.attr('method'),
@@ -61,7 +61,7 @@ $(document).ready(function(){
 			success: function(response){
 				if (response.saved == false){
 				alert("Something wrong :( Please make sure everything entered is LEGIT!")
-				$formSubmit.val('Log in');
+				$formSubmit.val('Log in').attr("disabled", false);
 			} else {
 				window.location.replace("/users/" + response.id)
 			}

@@ -39,7 +39,7 @@ $(document).ready(function(){
 				alert("Something wrong :( Please make sure everything entered is LEGIT!");
 				$formSubmit.val('Sign up').attr("disabled", false);
 			} else {
-				window.location.replace("/users/" + response.id)
+				window.location.replace("/users/" + response.id);
 			}
 			},
 		});
@@ -47,7 +47,6 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	console.log(localStorage)
 	$("#loginform").on("submit", function(event){
 		event.preventDefault()
 		$form = $(event.target)
@@ -60,10 +59,10 @@ $(document).ready(function(){
 			dataType: "JSON",
 			success: function(response){
 				if (response.saved == false){
-				alert("Something wrong :( Please make sure everything entered is LEGIT!")
+				alert("Something wrong :( Please make sure everything entered is LEGIT!");
 				$formSubmit.val('Log in').attr("disabled", false);
 			} else {
-				window.location.replace("/users/" + response.id)
+				window.location.replace("/users/" + response.id);
 			}
 			},
 		});

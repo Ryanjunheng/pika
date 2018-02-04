@@ -28,7 +28,8 @@ $(document).ready(function(){
 		event.preventDefault()
 		$form = $(event.target)
 		$formSubmit = $form.find('input[id="signupbutton"]')
-		$formSubmit.val('Loading..').attr("disabled", true);
+		$formSubmit.val('Loading...').attr("disabled", true);
+		alert("Something wrong :( Please make sure everything entered is LEGIT!");
 		$.ajax({
 			url: $form.attr('action'),
 			method: $form.attr('method'),

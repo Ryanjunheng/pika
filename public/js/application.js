@@ -35,11 +35,11 @@ $(document).ready(function(){
 			data: $form.serialize(),
 			dataType: "JSON",
 			success: function(response){
-				if (response.saved == false){ 
+				if (response.saved==false){ 
 				alert("Something wrong :( Please make sure everything entered is LEGIT!");
 				$formSubmit.val('Sign up').attr("disabled", false);
 			} else {
-				window.location.replace("/users/" + response.id);
+				window.location.replace("https://pikawami.herokuapp.com/users/" + response.id);
 			}
 			},
 		});
@@ -58,12 +58,11 @@ $(document).ready(function(){
 			data: $form.serialize(),
 			dataType: "JSON",
 			success: function(response){
-				if (response.saved == false){
-				$formSubmit.val('whattt');
+				if (response.saved==false){
 				alert("Something wrong :( Please make sure everything entered is LEGIT!");
-				// $formSubmit.val('Log in').attr("disabled", false);
+				$formSubmit.val('Log in').attr("disabled", false);
 			} else {
-				window.location.replace("/users/" + response.id);
+				window.location.replace("https://pikawami.herokuapp.com/users/" + response.id);
 			}
 			},
 		});

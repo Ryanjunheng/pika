@@ -1,3 +1,4 @@
+// likes count and like button update through ajax calls.
 $(document).ready(function(){
 	$(".upvote").on("submit", function(event){
 		event.preventDefault()
@@ -10,19 +11,14 @@ $(document).ready(function(){
 			data: $form.serialize(),
 			dataType: "JSON",
 			success: function(response){
-				console.log(response)
-				// let addLikecount = "<p id=\"plusone\">" + response.likecount + "&nbsp;&nbsp;<img id=\"likeicon\" src=\"/img/like.png\"></p>"
-				// $('#plusone-' + response.id).html(response.likecount)
 				$form.prev().find('span.plusone').html(response.likecount)
 				$formSubmit.replaceWith("<p>You've liked this post!</p>")
-
-				// $("#plusone").html(response.likecount);
-				
 			},
 		});
 	});
 });
 
+// pop up alert if sign up failure.
 $(document).ready(function(){
 	$("#signupform").on("submit", function(event){
 		event.preventDefault()
@@ -46,6 +42,7 @@ $(document).ready(function(){
 	});
 });
 
+// pop up alert if login failure.
 $(document).ready(function(){
 	$("#loginform").on("submit", function(event){
 		event.preventDefault()

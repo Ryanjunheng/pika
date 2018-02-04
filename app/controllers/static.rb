@@ -29,7 +29,7 @@ post '/login' do
 
 	if user and user.authenticate(params[:user_password])
 		session[:user_id] = user.id
-		puts "hello"
+		
 		{saved: true, id: user.id}.to_json
 	else
 		{saved: false}.to_json

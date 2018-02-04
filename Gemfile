@@ -9,7 +9,7 @@ gem 'sinatra-contrib'
 
 # Adding thin gem as advised
 gem 'thin'
-
+gem 'bcrypt'
 # Adding ActiveRecord and Database Components
 gem 'activerecord'
 gem 'activesupport'
